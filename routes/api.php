@@ -14,6 +14,7 @@ Route::namespace('Post')->middleware('auth:api')->group(function (){
     Route::post('update-post/{post:id}','PostController@update');
     Route::delete('delete-post/{post:id}','PostController@destroy');
 });
+Route::get('categories','Post\CategoryController@index');
 
 Route::get('posts/{post:slug}','Post\PostController@show');
 Route::get('posts','Post\PostController@index');

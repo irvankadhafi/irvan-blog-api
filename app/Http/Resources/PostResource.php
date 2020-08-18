@@ -17,11 +17,14 @@ class PostResource extends JsonResource
         return [
             'post_id'=>$this->id,
             'title'=>$this->title,
+            'slug'=>$this->slug,
             'published'=>$this->created_at->format("H:m d F Y"),
             'category'=>$this->category->name,
+            'categoryId' => $this->category->id,
             'author'=>$this->user->name,
             'body'=>$this->body,
             'image'=>$this->image,
+            'link'=>route('posts.show',$this->slug)
         ];
     }
     public function with($request)

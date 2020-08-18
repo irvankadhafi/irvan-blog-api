@@ -6,3 +6,7 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import "transitions";
+//::-moz-selection { background: yellow;border-radius: 15px }
+//::selection { background: yellow; border-radius: 15px}

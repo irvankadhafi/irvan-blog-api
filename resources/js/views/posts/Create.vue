@@ -5,31 +5,32 @@
                 <div class="card">
                     <div class="card-header">Create new Post</div>
                     <div class="card-body">
-                        <form action="#" method="post" @submit.prevent="store">
+                        <form>
                             <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" v-model="form.title" id="title" class="form-control">
-                                <div v-if="theErrors.title" class="mt-2 text-danger">{{ theErrors.title[0] }}</div>
+                                <input type="title" ref="title" class="form-control" id="title" placeholder="Enter title" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="category">Category</label>
-                                <select v-model="form.category" id="category" class="form-control">
+                                <select ref="category" name="category" id="category" class="form-control">
                                     <option disabled selected>Choose One!</option>
                                     <option v-for="category in categories" :key="category.id" :value="category.id">
                                         {{category.name}}
                                     </option>
                                 </select>
-                                <div v-if="theErrors.category" class="mt-2 text-danger">{{ theErrors.category[0] }}</div>
                             </div>
 
                             <div class="form-group">
-                                <label for="body">Body</label>
-                                <textarea v-model="form.body" id="body" rows="6" class="form-control"></textarea>
-                                <div v-if="theErrors.body" class="mt-2 text-danger">{{ theErrors.body[0] }}</div>
+                                <vue-editor v-model="editorData" ></vue-editor>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <div class="custom-file mb-3">
+                                <input type="file" ref="image" name="image" class="custom-file-input" id="image" required>
+                                <label class="custom-file-label" >Choose file...</label>
+                            </div>
+
+                            <button type="submit" @click.prevent="create" class="btn btn-primary block">
+                                Submit
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -39,56 +40,75 @@
 </template>
 
 <script>
-    export default {
-        data(){
-            return{
-                form: {
-                    title : '',
-                    body :'',
-                    category:'',
-                },
-                categories: [],
-                theErrors:[]
-            };
-        },
-        mounted() {
-            this.getCategories();
-        },
-        methods: {
-            async getCategories(){
-                let response = await axios.get('/api/categories')
-                // console.log(response.data);
-                if (response.status === 200){
-                    this.categories = response.data
-                }
+import { VueEditor } from 'vue2-editor'
+export default {
+    components: {
+        VueEditor,
+        // ckeditor: CKEditor.component
+    },
+    data(){
+        console.log(localStorage.getItem('token'))
+        return{
+            form: {
+                title : '',
+                body :'',
+                category:'',
             },
-            async store(){
-                try{
-                    let response = await axios.post('/api/posts/create',this.form)
-                    if(response.status === 200){
-                        // console.log(response.data);
-                        this.form.title=""
-                        this.form.category=""
-                        this.form.body=""
-                        this.theErrors = []
-                        this.$toasted.show(response.data.message,{
-                            type: 'success',
-                            duration: 3000,
-                        })
+            categories: [],
+            theErrors:[],
+            editorData: '<p>Content of the editor.</p>',
+            customToolbar: [
+                ['bold', 'italic', 'underline'],
+                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                ['image', 'code-block']
+            ]
+        };
+    },
+    mounted() {
+        this.getCategories();
+    },
+    methods: {
+        async getCategories(){
+            let response = await axios.get('/categories')
+            console.log(response.data);
+            if (response.status === 200){
+                this.categories = response.data
+            }
+        },
+        create() {
+            const formData = new FormData();
+            formData.append("title", this.$refs.title.value);
+            formData.append("category", this.$refs.category.value);
+            formData.append("body", this.editorData);
+            formData.append("image", this.$refs.image.files[0]);
+            axios
+                .post("/new-post", formData, {
+                    headers: {
+                        'Authorization' : 'Bearer' + localStorage.getItem('token')
                     }
-                }catch (e) {
-                    this.$toasted.show("Something went wrong!",{
-                        type: 'error',
+                })
+                .then(response => {
+                    this.successful = true;
+                    this.error = false;
+                    this.errors = [];
+                    this.$toasted.show(response.data.message,{
+                        type: 'success',
                         duration: 3000,
                     })
-                    this.theErrors = e.response.data.errors;
-                }
-
-            }
+                    // this.$router.push({name: 'posts'});
+                })
+                .catch(error => {
+                    if (!_.isEmpty(error.response)) {
+                        if ((error.response.status = 422)) {
+                            this.errors = error.response.data.errors;
+                            this.successful = false;
+                            this.error = true;
+                        }
+                    }
+                });
+            this.$refs.title.value = "";
+            this.editorData = "";
         }
     }
+}
 </script>
-
-<style scoped>
-
-</style>

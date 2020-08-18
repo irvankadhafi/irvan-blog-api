@@ -10,11 +10,7 @@
 </head>
 <body>
 <div id="irvan">
-    <navigation></navigation>
-
-    <div class="mt-4">
-        <router-view></router-view>
-    </div>
+    <app></app>
 </div>
 <script src="/js/app.js"></script>
 </body>

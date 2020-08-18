@@ -1,5 +1,6 @@
 import './bootstrap'
 import Vue from 'vue';
+import App from './components/App'
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 import Toasted from 'vue-toasted'
@@ -13,6 +14,7 @@ axios.defaults.baseURL='/api'
 store.dispatch('auth/attempt',localStorage.getItem('token')).then(()=>{
     const app = new Vue({
         el: '#irvan',
+        components : {App},
         router : new VueRouter(routes),
         store : store
     });

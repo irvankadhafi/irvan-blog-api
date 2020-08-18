@@ -53,6 +53,10 @@
             }),
             signOut(){
                 this.signOutAction().then(()=>{
+                    this.$toasted.show('Anda Telah Logout',{
+                        type: 'danger',
+                        duration: 3000,
+                    })
                     this.$router.replace({
                         name:'home'
                     })

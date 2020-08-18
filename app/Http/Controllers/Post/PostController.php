@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Post;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Http\Resources\PostResource;
+use App\Models\Post\Category;
 use App\Models\Post\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -40,12 +41,12 @@ class PostController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category'=>'required'
         ],
-        [
-            'title.required' => 'Masukkan Title Post!',
-            'body.required' => 'Masukkan isi Post!',
-            'image.required'=>'Input Image',
-            'category'=>'Masukkan ID Category'
-        ]);
+            [
+                'title.required' => 'Masukkan Title Post!',
+                'body.required' => 'Masukkan isi Post!',
+                'image.required'=>'Input Image',
+                'category'=>'Masukkan ID Category'
+            ]);
         if($validator->fails()){
             return response()->json(
                 [

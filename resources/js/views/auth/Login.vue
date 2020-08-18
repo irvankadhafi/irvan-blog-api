@@ -13,7 +13,7 @@
                         <label for="password">Password</label>
                         <input type="password" id="password" class="form-control" v-model="form.password">
                     </div>
-                    <button type="submit" class="btn btn-default">Login</button>
+                    <button type="submit" class="btn btn-default btn-success">Login</button>
                 </form>
             </div>
         </div>
@@ -39,6 +39,10 @@ export default {
         }),
         submit() {
             this.signIn(this.form).then(()=>{
+                this.$toasted.show('Sukses Login',{
+                    type: 'success',
+                    duration: 3000,
+                })
                 this.$router.replace({
                     name : 'posts.create'
                 })
