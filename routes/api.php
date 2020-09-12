@@ -16,7 +16,7 @@ Route::namespace('Post')->middleware('auth:api')->group(function (){
 });
 Route::get('categories','Post\CategoryController@index');
 
-Route::get('posts/{post:slug}','Post\PostController@show');
+Route::get('posts/{post:slug}','Post\PostController@show')->name('posts.show');
 Route::get('posts','Post\PostController@index');
 
 Route::get('auth/user','UserController');

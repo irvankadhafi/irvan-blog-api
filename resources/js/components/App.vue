@@ -1,7 +1,7 @@
 <template>
     <div id="irvan">
         <navigation></navigation>
-        <div class="mt-4">
+        <div>
             <transition name="page" mode="out-in">
                 <router-view />
             </transition>

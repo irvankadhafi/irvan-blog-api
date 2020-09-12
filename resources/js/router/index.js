@@ -1,9 +1,13 @@
 import Home from "../views/Home";
 import About from "../views/About";
 import NewPost from "../views/posts/Create";
+import News from "../views/News";
+import TableofPosts from '../views/posts/Table';
 import Register from '../views/auth/Register';
 import Login from '../views/auth/Login';
-import store from '../store'
+import DetailPost from '../views/posts/Show';
+import store from '../store';
+import EditPost from '../views/posts/Edit';
 function requireAuth(to,from,next) {
     if(!store.getters['auth/authenticated']){
         return next({
@@ -28,6 +32,11 @@ export default {
             component : About
         },
         {
+            path : '/news',
+            name : 'pages.news',
+            component : News
+        },
+        {
             path : '/posts/create',
             name : 'posts.create',
             component : NewPost,
@@ -41,6 +50,27 @@ export default {
             path: '/login',
             name: 'signin',
             component: Login
+        },
+        {
+            path: '/posts/table',
+            name: 'posts.table',
+            component: TableofPosts,
+            beforeEnter : requireAuth
+        },
+        {
+            path: '/posts/:postSlug',
+            name: 'posts.detail',
+            component: DetailPost
+        },
+        {
+            path: '/posts/:postSlug/edit',
+            name: 'posts.edit',
+            component: EditPost
         }
-    ]
+
+    ],
+    scrollBehavior() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+        // document.getElementById('irvan').scrollIntoView({top: 0, behavior: 'smooth'});
+    }
 }

@@ -27,8 +27,8 @@ class PostResource extends JsonResource
             'link'=>route('posts.show',$this->slug)
         ];
     }
-    public function with($request)
-    {
-        return ['status'=>'success'];
-    }
+//    public function with($request)
+//    {
+//        return ['status'=>'success'];
+//    }
 }
