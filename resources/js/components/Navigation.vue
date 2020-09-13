@@ -1,8 +1,8 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
-        <a class="navbar-brand" href="#">
+        <router-link class="navbar-brand" exact :to="{name : 'home'}">
             <img src="/img/header.png" height="35" class="d-inline-block align-top" alt="">
-        </a>
+        </router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

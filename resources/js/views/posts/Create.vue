@@ -72,7 +72,7 @@ export default {
             let response = await axios.get('/categories')
             console.log(response.data);
             if (response.status === 200){
-                this.categories = response.data
+                this.categories = response.data.data
             }
         },
         create() {

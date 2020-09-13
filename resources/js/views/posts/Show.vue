@@ -31,7 +31,7 @@
 
                                 <!-- Post Content -->
                                 <p class="lead" v-html="post.body"></p>
-                                <a @click="$router.go(-1)">back</a>
+                                <button class="btn btn-success btn-sm w-25" @click="$router.go(-1)">back</button>
                             </div>
 
                             <hr>
@@ -97,24 +97,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
-                                <div class="card-header" style="text-align: center">
-                                    <h4 class="m-auto text-dark">Categories</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="list-group">
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/uncategorized" class="list-group-item list-group-item-action">Uncategorized</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/manajemen" class="list-group-item list-group-item-action">Manajemen</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/informasi-kp" class="list-group-item list-group-item-action">Informasi KP</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/pendidikan" class="list-group-item list-group-item-action">Pendidikan</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/kesehatan" class="list-group-item list-group-item-action">Kesehatan</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/donor-darah" class="list-group-item list-group-item-action">Donor Darah</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/hari-peringatan" class="list-group-item list-group-item-action">Hari Peringatan</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/psikologi" class="list-group-item list-group-item-action">Psikologi</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/bisnis" class="list-group-item list-group-item-action">Bisnis</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <PostCategories></PostCategories>
                         </div>
                     </div>
                 </div>
@@ -124,8 +107,13 @@
 </template>
 
 <script>
+import PostCategories from '../../components/Categories'
+import pagination from "laravel-vue-pagination";
 export default {
     name: "Show",
+    components :{
+        PostCategories
+    },
     data(){
         return{
             post:[]

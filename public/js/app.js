@@ -1935,6 +1935,77 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Categories.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Categories.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Categories",
+  data: function data() {
+    return {
+      categories: {}
+    };
+  },
+  mounted: function mounted() {
+    this.getCategories();
+  },
+  methods: {
+    getCategories: function getCategories() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.get('/categories');
+
+              case 2:
+                response = _context.sent;
+                console.log(response.data);
+                _this.categories = response.data;
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LogoSwiper.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LogoSwiper.vue?vue&type=script&lang=js& ***!
@@ -2242,6 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
 /* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Categories__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Categories */ "./resources/js/components/Categories.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2313,23 +2385,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 __webpack_require__(/*! vue2-animate/dist/vue2-animate.min.css */ "./node_modules/vue2-animate/dist/vue2-animate.min.css");
@@ -2338,15 +2394,17 @@ __webpack_require__(/*! vue2-animate/dist/vue2-animate.min.css */ "./node_module
   name: "News",
   components: {
     pagination: laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_1___default.a,
+    PostCategories: _components_Categories__WEBPACK_IMPORTED_MODULE_2__["default"],
     transitionName: 'fade'
   },
   data: function data() {
     return {
-      posts: {}
+      posts: {},
+      categories: {}
     };
   },
   mounted: function mounted() {
-    this.getPosts();
+    this.getPosts(), this.getCategories();
   },
   methods: {
     getPosts: function getPosts() {
@@ -2374,6 +2432,31 @@ __webpack_require__(/*! vue2-animate/dist/vue2-animate.min.css */ "./node_module
             }
           }
         }, _callee);
+      }))();
+    },
+    getCategories: function getCategories() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.get('/categories');
+
+              case 2:
+                response = _context2.sent;
+                console.log(response.data);
+                _this2.categories = response.data;
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -2559,7 +2642,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.log(response.data);
 
                 if (response.status === 200) {
-                  _this.categories = response.data;
+                  _this.categories = response.data.data;
                 }
 
               case 5:
@@ -2644,6 +2727,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_Categories__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/Categories */ "./resources/js/components/Categories.vue");
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js");
+/* harmony import */ var laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(laravel_vue_pagination__WEBPACK_IMPORTED_MODULE_2__);
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2758,25 +2844,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Show",
+  components: {
+    PostCategories: _components_Categories__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   data: function data() {
     return {
       post: []
@@ -66415,6 +66489,65 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Categories.vue?vue&type=template&id=8ceef672&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Categories.vue?vue&type=template&id=8ceef672&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c(
+        "div",
+        { staticClass: "list-group" },
+        _vm._l(_vm.categories.data, function(category) {
+          return _c(
+            "a",
+            {
+              key: category.slug,
+              staticClass: "list-group-item list-group-item-action",
+              attrs: {
+                href:
+                  "http://nuthink.jtk.polban.ac.id/list-category/uncategorized"
+              }
+            },
+            [_vm._v(_vm._s(category.name))]
+          )
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "card-header", staticStyle: { "text-align": "center" } },
+      [_c("h4", { staticClass: "m-auto text-dark" }, [_vm._v("Categories")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/LogoSwiper.vue?vue&type=template&id=7a22212e&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/LogoSwiper.vue?vue&type=template&id=7a22212e&scoped=true& ***!
@@ -66507,9 +66640,21 @@ var render = function() {
     "nav",
     { staticClass: "navbar navbar-expand-lg navbar-light bg-white sticky-top" },
     [
-      _vm._m(0),
+      _c(
+        "router-link",
+        {
+          staticClass: "navbar-brand",
+          attrs: { exact: "", to: { name: "home" } }
+        },
+        [
+          _c("img", {
+            staticClass: "d-inline-block align-top",
+            attrs: { src: "/img/header.png", height: "35", alt: "" }
+          })
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "div",
@@ -66654,21 +66799,11 @@ var render = function() {
           )
         ]
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-      _c("img", {
-        staticClass: "d-inline-block align-top",
-        attrs: { src: "/img/header.png", height: "35", alt: "" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -67052,66 +67187,73 @@ var render = function() {
                 _c(
                   "transition-group",
                   { staticClass: "row", attrs: { name: "fade", tag: "div" } },
-                  _vm._l(_vm.posts.data, function(post, index) {
+                  _vm._l(_vm.posts.data, function(post) {
                     return _c(
                       "div",
                       { key: post.slug, staticClass: "col-md-6" },
                       [
-                        _c("div", { staticClass: "post" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "post-img",
-                              attrs: {
-                                href:
-                                  "http://nuthink.jtk.polban.ac.id/isi-post/peer-counselor"
-                              }
-                            },
-                            [
-                              _c("img", {
-                                staticStyle: { height: "200px" },
-                                attrs: {
-                                  src: "/uploads/posts/" + post.image,
-                                  alt: ""
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "post-body" }, [
-                            _c("div", { staticClass: "post-category" }, [
-                              _c("a", { attrs: { href: "#" } }, [
-                                _vm._v(_vm._s(post.category))
-                              ])
-                            ]),
-                            _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "post" },
+                          [
                             _c(
-                              "h3",
-                              { staticClass: "post-title" },
+                              "router-link",
+                              {
+                                staticClass: "post-img",
+                                attrs: {
+                                  to: {
+                                    name: "posts.detail",
+                                    params: { postSlug: post.slug }
+                                  }
+                                }
+                              },
                               [
-                                _c(
-                                  "router-link",
-                                  {
-                                    attrs: {
-                                      to: {
-                                        name: "posts.detail",
-                                        params: { postSlug: post.slug }
-                                      }
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(post.title))]
-                                )
-                              ],
-                              1
+                                _c("img", {
+                                  staticStyle: { height: "200px" },
+                                  attrs: {
+                                    src: "/uploads/posts/" + post.image,
+                                    alt: ""
+                                  }
+                                })
+                              ]
                             ),
                             _vm._v(" "),
-                            _c("ul", { staticClass: "post-meta" }, [
-                              _c("li", [_vm._v(_vm._s(post.author))]),
+                            _c("div", { staticClass: "post-body" }, [
+                              _c("div", { staticClass: "post-category" }, [
+                                _c("a", { attrs: { href: "#" } }, [
+                                  _vm._v(_vm._s(post.category))
+                                ])
+                              ]),
                               _vm._v(" "),
-                              _c("li", [_vm._v(_vm._s(post.published))])
+                              _c(
+                                "h3",
+                                { staticClass: "post-title" },
+                                [
+                                  _c(
+                                    "router-link",
+                                    {
+                                      attrs: {
+                                        to: {
+                                          name: "posts.detail",
+                                          params: { postSlug: post.slug }
+                                        }
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(post.title))]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c("ul", { staticClass: "post-meta" }, [
+                                _c("li", [_vm._v(_vm._s(post.author))]),
+                                _vm._v(" "),
+                                _c("li", [_vm._v(_vm._s(post.published))])
+                              ])
                             ])
-                          ])
-                        ])
+                          ],
+                          1
+                        )
                       ]
                     )
                   }),
@@ -67126,7 +67268,12 @@ var render = function() {
               1
             ),
             _vm._v(" "),
-            _vm._m(1)
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [_vm._m(1), _vm._v(" "), _c("PostCategories")],
+              1
+            )
           ])
         ])
       ])
@@ -67161,160 +67308,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("div", { staticClass: "card" }, [
-        _c(
-          "div",
-          {
-            staticClass: "card-header",
-            staticStyle: { "text-align": "center" }
-          },
-          [_c("h4", { staticClass: "m-auto text-dark" }, [_vm._v("Search")])]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c(
-            "form",
-            {
-              attrs: {
-                action: "http://nuthink.jtk.polban.ac.id/cari",
-                method: "get"
-              }
-            },
-            [
-              _c("input", {
-                staticClass: "input",
-                attrs: { name: "cari", placeholder: "Enter your search..." }
-              })
-            ]
-          )
-        ])
-      ]),
+    return _c("div", { staticClass: "card" }, [
+      _c(
+        "div",
+        { staticClass: "card-header", staticStyle: { "text-align": "center" } },
+        [_c("h4", { staticClass: "m-auto text-dark" }, [_vm._v("Search")])]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
         _c(
-          "div",
+          "form",
           {
-            staticClass: "card-header",
-            staticStyle: { "text-align": "center" }
+            attrs: {
+              action: "http://nuthink.jtk.polban.ac.id/cari",
+              method: "get"
+            }
           },
           [
-            _c("h4", { staticClass: "m-auto text-dark" }, [
-              _vm._v("Categories")
-            ])
+            _c("input", {
+              staticClass: "input",
+              attrs: { name: "cari", placeholder: "Enter your search..." }
+            })
           ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "list-group" }, [
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/uncategorized"
-                }
-              },
-              [_vm._v("Uncategorized")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/manajemen"
-                }
-              },
-              [_vm._v("Manajemen")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/informasi-kp"
-                }
-              },
-              [_vm._v("Informasi KP")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/pendidikan"
-                }
-              },
-              [_vm._v("Pendidikan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/kesehatan"
-                }
-              },
-              [_vm._v("Kesehatan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/donor-darah"
-                }
-              },
-              [_vm._v("Donor Darah")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/hari-peringatan"
-                }
-              },
-              [_vm._v("Hari Peringatan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/psikologi"
-                }
-              },
-              [_vm._v("Psikologi")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href: "http://nuthink.jtk.polban.ac.id/list-category/bisnis"
-                }
-              },
-              [_vm._v("Bisnis")]
-            )
-          ])
-        ])
+        )
       ])
     ])
   }
@@ -67838,8 +67854,9 @@ var render = function() {
                 }),
                 _vm._v(" "),
                 _c(
-                  "a",
+                  "button",
                   {
+                    staticClass: "btn btn-success btn-sm w-25",
                     on: {
                       click: function($event) {
                         return _vm.$router.go(-1)
@@ -67859,7 +67876,12 @@ var render = function() {
               _vm._m(2)
             ]),
             _vm._v(" "),
-            _vm._m(3)
+            _c(
+              "div",
+              { staticClass: "col-md-3" },
+              [_vm._m(3), _vm._v(" "), _c("PostCategories")],
+              1
+            )
           ])
         ])
       ])
@@ -67959,160 +67981,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("div", { staticClass: "card" }, [
-        _c(
-          "div",
-          {
-            staticClass: "card-header",
-            staticStyle: { "text-align": "center" }
-          },
-          [_c("h4", { staticClass: "m-auto text-dark" }, [_vm._v("Search")])]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c(
-            "form",
-            {
-              attrs: {
-                action: "http://nuthink.jtk.polban.ac.id/cari",
-                method: "get"
-              }
-            },
-            [
-              _c("input", {
-                staticClass: "input",
-                attrs: { name: "cari", placeholder: "Enter your search..." }
-              })
-            ]
-          )
-        ])
-      ]),
+    return _c("div", { staticClass: "card" }, [
+      _c(
+        "div",
+        { staticClass: "card-header", staticStyle: { "text-align": "center" } },
+        [_c("h4", { staticClass: "m-auto text-dark" }, [_vm._v("Search")])]
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "card-body" }, [
         _c(
-          "div",
+          "form",
           {
-            staticClass: "card-header",
-            staticStyle: { "text-align": "center" }
+            attrs: {
+              action: "http://nuthink.jtk.polban.ac.id/cari",
+              method: "get"
+            }
           },
           [
-            _c("h4", { staticClass: "m-auto text-dark" }, [
-              _vm._v("Categories")
-            ])
+            _c("input", {
+              staticClass: "input",
+              attrs: { name: "cari", placeholder: "Enter your search..." }
+            })
           ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body" }, [
-          _c("div", { staticClass: "list-group" }, [
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/uncategorized"
-                }
-              },
-              [_vm._v("Uncategorized")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/manajemen"
-                }
-              },
-              [_vm._v("Manajemen")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/informasi-kp"
-                }
-              },
-              [_vm._v("Informasi KP")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/pendidikan"
-                }
-              },
-              [_vm._v("Pendidikan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/kesehatan"
-                }
-              },
-              [_vm._v("Kesehatan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/donor-darah"
-                }
-              },
-              [_vm._v("Donor Darah")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/hari-peringatan"
-                }
-              },
-              [_vm._v("Hari Peringatan")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href:
-                    "http://nuthink.jtk.polban.ac.id/list-category/psikologi"
-                }
-              },
-              [_vm._v("Psikologi")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: {
-                  href: "http://nuthink.jtk.polban.ac.id/list-category/bisnis"
-                }
-              },
-              [_vm._v("Bisnis")]
-            )
-          ])
-        ])
+        )
       ])
     ])
   }
@@ -85871,6 +85762,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/Categories.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/Categories.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Categories_vue_vue_type_template_id_8ceef672_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Categories.vue?vue&type=template&id=8ceef672&scoped=true& */ "./resources/js/components/Categories.vue?vue&type=template&id=8ceef672&scoped=true&");
+/* harmony import */ var _Categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Categories.vue?vue&type=script&lang=js& */ "./resources/js/components/Categories.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Categories_vue_vue_type_template_id_8ceef672_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Categories_vue_vue_type_template_id_8ceef672_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "8ceef672",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Categories.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Categories.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Categories.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Categories.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Categories.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Categories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Categories.vue?vue&type=template&id=8ceef672&scoped=true&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/Categories.vue?vue&type=template&id=8ceef672&scoped=true& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Categories_vue_vue_type_template_id_8ceef672_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Categories.vue?vue&type=template&id=8ceef672&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Categories.vue?vue&type=template&id=8ceef672&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Categories_vue_vue_type_template_id_8ceef672_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Categories_vue_vue_type_template_id_8ceef672_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/LogoSwiper.vue":
 /*!************************************************!*\
   !*** ./resources/js/components/LogoSwiper.vue ***!
@@ -86155,6 +86115,7 @@ function requireAuth(to, from, next) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  base: '/',
   mode: 'history',
   linkActiveClass: 'active',
   routes: [{
@@ -87047,8 +87008,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/irvan/Desktop/Laravel Project/nuthink_remake/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/irvan/Desktop/Laravel Project/nuthink_remake/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/irvan/Desktop/Laravel Project/nuthink_remake_2/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/irvan/Desktop/Laravel Project/nuthink_remake_2/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -16,11 +16,11 @@
                     <div class="row">
                         <div class="col-md-9">
                             <transition-group name="fade" tag="div" class="row">
-                                <div class="col-md-6" v-for="(post,index) in posts.data" :key="post.slug">
+                                <div class="col-md-6" v-for="post in posts.data" :key="post.slug">
                                     <div class="post">
-                                        <a class="post-img" href="http://nuthink.jtk.polban.ac.id/isi-post/peer-counselor">
+                                        <router-link :to="{name:'posts.detail', params: {postSlug : post.slug}}" class="post-img">
                                             <img :src="'/uploads/posts/'+post.image" alt="" style="height: 200px">
-                                        </a>
+                                        </router-link>
                                         <div class="post-body">
                                             <div class="post-category">
                                                 <a href="#">{{post.category}}</a>
@@ -53,24 +53,7 @@
                                 </div>
                             </div>
 
-                            <div class="card">
-                                <div class="card-header" style="text-align: center">
-                                    <h4 class="m-auto text-dark">Categories</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div class="list-group">
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/uncategorized" class="list-group-item list-group-item-action">Uncategorized</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/manajemen" class="list-group-item list-group-item-action">Manajemen</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/informasi-kp" class="list-group-item list-group-item-action">Informasi KP</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/pendidikan" class="list-group-item list-group-item-action">Pendidikan</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/kesehatan" class="list-group-item list-group-item-action">Kesehatan</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/donor-darah" class="list-group-item list-group-item-action">Donor Darah</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/hari-peringatan" class="list-group-item list-group-item-action">Hari Peringatan</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/psikologi" class="list-group-item list-group-item-action">Psikologi</a>
-                                        <a href="http://nuthink.jtk.polban.ac.id/list-category/bisnis" class="list-group-item list-group-item-action">Bisnis</a>
-                                    </div>
-                                </div>
-                            </div>
+                            <PostCategories></PostCategories>
                         </div>
                     </div>
                 </div>
@@ -82,20 +65,24 @@
 
 <script>
 import pagination from 'laravel-vue-pagination';
+import PostCategories from '../components/Categories'
 require('vue2-animate/dist/vue2-animate.min.css')
 export default {
     name: "News",
     components :{
         pagination,
+        PostCategories,
         transitionName: 'fade'
     },
     data(){
         return{
-            posts: {}
+            posts: {},
+            categories : {}
         }
     },
     mounted(){
-        this.getPosts()
+        this.getPosts(),
+        this.getCategories()
 
     },
     methods:{
@@ -103,6 +90,11 @@ export default {
             let response = await axios.get('/posts?page='+page)
             console.log(response.data)
             this.posts = response.data;
+        },
+        async getCategories(){
+            let response = await axios.get('/categories')
+            console.log(response.data)
+            this.categories = response.data;
         }
     }
 }

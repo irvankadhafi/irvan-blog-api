@@ -17,6 +17,7 @@ function requireAuth(to,from,next) {
     next()
 }
 export default {
+    base: '/',
     mode:'history',
     linkActiveClass:'active',
 
