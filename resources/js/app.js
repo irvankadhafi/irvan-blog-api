@@ -16,6 +16,6 @@ store.dispatch('auth/attempt',localStorage.getItem('token')).then(()=>{
         el: '#irvan',
         components : {App},
         router : new VueRouter(routes),
-        store : store
+        store : store,
     });
 })

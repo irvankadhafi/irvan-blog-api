@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <router-link class="navbar-brand" exact :to="{name : 'home'}">
-            <img src="/img/header.png" height="35" class="d-inline-block align-top" alt="">
+            <img :src="'/img/'+info.nav_img" height="35" class="d-inline-block align-top" alt="">
         </router-link>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -45,15 +45,22 @@
         </div>
     </nav>
 </template>
-
+<style scoped>
+.navbar-yellow{
+    background-color: #FFFFF;
+}
+</style>
 <script>
-import {mapGetters,mapActions} from 'vuex'
+import {mapGetters,mapActions,mapState} from 'vuex'
 export default {
     computed : {
         ...mapGetters({
             authenticated : 'auth/authenticated',
             user   : 'auth/user'
-        })
+        }),
+        ...mapState([
+            'info'
+        ])
     },
     methods:{
         ...mapActions({
@@ -71,6 +78,9 @@ export default {
             })
         }
     },
+    mounted() {
+        this.$store.dispatch('loadInfo')
+    },
     watch: {
         '$route' () {
             $('#navbarSupportedContent').collapse('hide');
@@ -78,3 +88,4 @@ export default {
     }
 }
 </script>
+

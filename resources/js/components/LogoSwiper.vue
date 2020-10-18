@@ -1,117 +1,191 @@
 <template>
-    <swiper class="swiper" ref="swiper" :options="swiperOption">
-        <swiper-slide>
-            <img class="img-fluid" src="http://nuthink.jtk.polban.ac.id/img/logo1.jpg" alt="" />
-        </swiper-slide>
-        <swiper-slide>
-            <img class="img-fluid" src="http://nuthink.jtk.polban.ac.id/img/logo2.jpg" alt="" />
-        </swiper-slide>
-        <swiper-slide>
-            <img class="img-fluid" src="http://nuthink.jtk.polban.ac.id/img/logo3.jpg" alt="" />
-        </swiper-slide>
-        <swiper-slide>
-            <img class="img-fluid" src="http://nuthink.jtk.polban.ac.id/img/logo4.jpg" alt="" />
-        </swiper-slide>
+    <div>
+        <section class="carousel">
+            <div class="carousel__container">
+                <div class="carousel--item">
+                    <img
+                        class="carousel--item__img"
+                        src="https://images.pexels.com/photos/1200450/pexels-photo-1200450.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="item"
+                    />
 
-    </swiper>
+                    <div class="carousel--item__details">
+                        <div>
+
+                        </div>
+
+                        <p class="carousel--item__details--title">Titulo provisional</p>
+                        <p class="carousel--item__details--subtitle">
+                            2020 16+ 114 Minutos
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel--item">
+                    <img
+                        class="carousel--item__img"
+                        src="https://images.pexels.com/photos/1200450/pexels-photo-1200450.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="item"
+                    />
+                    <div class="carousel--item__details">
+                        <div>
+
+                        </div>
+                        <p class="carousel--item__details--title">Titulo provisional</p>
+                        <p class="carousel--item__details--subtitle">
+                            2020 16+ 114 Minutos
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel--item">
+                    <img
+                        class="carousel--item__img"
+                        src="https://images.pexels.com/photos/1200450/pexels-photo-1200450.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="item"
+                    />
+                    <div class="carousel--item__details">
+                        <div>
+
+                        </div>
+                        <p class="carousel--item__details--title">Titulo provisional</p>
+                        <p class="carousel--item__details--subtitle">
+                            2020 16+ 114 Minutos
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel--item">
+                    <img
+                        class="carousel--item__img"
+                        src="https://images.pexels.com/photos/1200450/pexels-photo-1200450.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="item"
+                    />
+                    <div class="carousel--item__details">
+                        <div>
+
+                        </div>
+                        <p class="carousel--item__details--title">Titulo provisional</p>
+                        <p class="carousel--item__details--subtitle">
+                            2020 16+ 114 Minutos
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel--item">
+                    <img
+                        class="carousel--item__img"
+                        src="https://images.pexels.com/photos/1200450/pexels-photo-1200450.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="item"
+                    />
+                    <div class="carousel--item__details">
+                        <div>
+
+                        </div>
+                        <p class="carousel--item__details--title">Titulo provisional</p>
+                        <p class="carousel--item__details--subtitle">
+                            2020 16+ 114 Minutos
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel--item">
+                    <img
+                        class="carousel--item__img"
+                        src="https://images.pexels.com/photos/1200450/pexels-photo-1200450.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                        alt="item"
+                    />
+                    <div class="carousel--item__details">
+                        <div>
+
+                        </div>
+                        <p class="carousel--item__details--title">Titulo provisional</p>
+                        <p class="carousel--item__details--subtitle">
+                            2020 16+ 114 Minutos
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
-import 'swiper/swiper-bundle.css'
-
 export default {
     name: 'LogoSwiper',
-    title: 'Loop mode with multiple slides per group',
-    components: {
-        Swiper,
-        SwiperSlide
-    },
-    data() {
-        return {
-            swiperOption: {
-                slidesPerView: 3,
-                spaceBetween: 40,
-                direction: 'horizontal',
-                on: {
-                    resize: () => {
-                        this.$refs.swiper.$swiper.changeDirection(
-                            window.innerWidth <= 960
-                                ? 'vertical'
-                                : 'horizontal'
-                        )
-                    }
-                }
-            }
-        }
-    }
 }
 </script>
-
-<style lang="scss" scoped>
-// colors
-$white: #FFFFFF;
-$black: #000000;
-$github-primary: #24292e;
-$github-secondary: #30363c;
-$github-text-primary: #0366d6;
-$github-sponsor-primary: rgb(234, 74, 170);
-
-$body-bg: #e0e0e0;
-$module-bg: $white;
-$module-bg-darken: #f7f7f7;
-
-$text-color: #353535;
-$text-secondary: lighten($text-color, 20%);
-$link-color: $black;
-$text-reverse: $module-bg-darken;
-
-// sizes
-$container-width: 960px;
-$radius: 1px;
-
-// gaps
-$golden-ratio: 0.618;
-$gap: 1rem; // ~14px
-$sm-gap: $gap * $golden-ratio; // ~8.6px
-$xs-gap: $sm-gap / 2; // ~4.4px
-$lg-gap: $sm-gap * 2; // ~17px
-
-// times
-$transition-time-fast: .15s;
-$transition-time-normal: .25s;
-$transition-time-slow: .38s;
-
-// fonts
-$font-size-base: 14px;
-$font-size-large: $font-size-base * 1.1; // ~15.4px
-$font-size-huge: $font-size-base * 1.3; // ~19px
-$font-size-small: $font-size-base * .888; // ~12.4px
-
-$iconfont-size: $font-size-base * 1.35;
-.swiper {
-    height: 350px;
-    width: 100%;
-
-    .swiper-slide {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-weight: bold;
-        font-size: $font-size-huge * 2;
-        background-color: $white;
-    }
+<style scoped>
+/* Carrousel */
+.carousel {
+    position: relative;
+    overflow-x: hidden;
 }
-@media (max-width: $container-width) {
-    .swiper-button-next {
-        right: 20px;
-        transform: rotate(90deg);
-    }
 
-    .swiper-button-prev {
-        left: 20px;
-        transform: rotate(90deg);
+.carousel__container {
+    padding-bottom: 10px;
+    width: 100%;
+    margin: 70px auto;
+    white-space: nowrap;
+}
+
+.carousel--item {
+    display: inline-block;
+    position: relative;
+    margin: 10px 8px;
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+    background-color: lightblue;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 350ms all;
+    transform-origin: center left;
+}
+
+.carousel--item:hover ~ .carousel--item {
+    transform: translate3d(100px, 0, 0);
+}
+.carousel__container:hover .carousel--item {
+    opacity: 0.3;
+}
+
+.carousel__container:hover .carousel--item:hover {
+    transform: scale(1.2, 1.2);
+    opacity: 1;
+}
+
+.carousel--item:hover .carousel--item__details {
+    opacity: 1;
+}
+
+.carousel--item__img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+.carousel--item__details {
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 10px;
+    background: linear-gradient(83deg, rgba(244, 67, 54, 0.8) 0%, rgba(255, 87, 34, 0.1) 100%);
+    opacity: 0;
+    transition: 350ms opacity;
+}
+.carousel--item__details img {
+    margin: 0 5px;
+    width: 20px;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
     }
 }
 </style>

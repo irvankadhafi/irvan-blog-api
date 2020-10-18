@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class  AddImageToPostTable extends Migration
+class CreateWebsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class  AddImageToPostTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('image')->after('body')->default('');
+        Schema::create('webs', function (Blueprint $table) {
+            $table->string('title');
+            $table->string('description');
+            $table->string('navbar_image');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class  AddImageToPostTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('image');
-        });
+        Schema::dropIfExists('webs');
     }
 }
