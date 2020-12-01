@@ -13,10 +13,19 @@
                     <router-link class="nav-link" exact :to="{name : 'home'}">Home <span class="sr-only">(current)</span></router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name:'pages.about'}">About</router-link>
+                    <router-link class="nav-link" :to="{name:'pages.about'}">Departement</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" :to="{name:'pages.news'}">News</router-link>
+                    <router-link class="nav-link" :to="{name:'pages.about'}">Ormawa</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name:'pages.news'}">Polban News</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name:'pages.about'}">Advo Care</router-link>
+                </li>
+                <li class="nav-item">
+                    <router-link class="nav-link" :to="{name:'pages.about'}">Contact</router-link>
                 </li>
                 <template v-if="authenticated">
                     <li class="nav-item">
