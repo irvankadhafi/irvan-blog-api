@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@splidejs/vue-splide": "^0.3.5",
         "@websanova/vue-auth": "^3.2.1-beta",
         "es6-promise": "^4.2.8",
         "js-cookie": "^2.2.1",

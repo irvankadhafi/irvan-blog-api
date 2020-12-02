@@ -30,9 +30,9 @@
                             kabinet <strong>Poros Juang</strong>.
                         </p>
                     </div>
-<!--                </div>-->
-<!--                <div class="col-md-4 offset-md-6">-->
-<!--                <div>-->
+                    <!--                </div>-->
+                    <!--                <div class="col-md-4 offset-md-6">-->
+                    <!--                <div>-->
                     <div class="row" style="padding-top: 100px">
                         <div class="column ml-lg-5 mr-5" style="padding-top: 120px">
                             <img src="/img/kabinetlogo.png" alt="" style="height: 500px">
@@ -89,7 +89,23 @@
             <div class="row" style="padding-top: 40px;padding-bottom: 40px">
                 <div class="col-md-8 offset-md-2">
                     <div>
-                        <h3 class="font-weight-bold text-center">Visi & Misi</h3>
+
+                        <splide :options="options" class="text-center">
+                            <splide-slide>
+                                <img src="/img/gerigi.png" alt="" style="height: 400px">
+                            </splide-slide>
+                            <splide-slide>
+                                <img src="/img/empat_titik.png" alt="" style="height: 400px">
+                            </splide-slide>
+                            <splide-slide>
+                                <img src="/img/benang_sari.png" alt="" style="height: 400px">
+                            </splide-slide>
+                            <splide-slide>
+                                <img src="/img/5_kelopak.png" alt="" style="height: 400px">
+                            </splide-slide>
+                        </splide>
+
+                        <!--                        <h3 class="font-weight-bold text-center">Visi & Misi</h3>-->
                         <h4>Visi</h4>
                         <p style="font-size: 20px">
                             Meningkatkan hardskill dan softskill serta menumbuhkan jiwa kewirausahaan anggota.
@@ -112,11 +128,29 @@
 import HeaderWave from '../components/Wave'
 import LogoSwiper from '../components/LogoSwiper'
 import {mapState} from 'vuex';
+import {Splide, SplideSlide} from '@splidejs/vue-splide';
+import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
 
 export default {
     name: "Home",
+    data() {
+        return {
+            options: {
+                type: 'loop',
+                rewind: true,
+                width: 1500,
+                height: 500,
+                perPage: 1,
+                padding: {
+                    right: '17rem',
+                    left: '17rem',
+                },
+                gap: '1rem',
+            },
+        };
+    },
     components: {
-        HeaderWave, LogoSwiper
+        HeaderWave, LogoSwiper, Splide, SplideSlide
     },
     mounted() {
         this.$store.dispatch('loadInfo')
