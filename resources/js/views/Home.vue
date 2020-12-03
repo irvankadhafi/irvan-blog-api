@@ -92,16 +92,24 @@
 
                         <splide :options="options" class="text-center">
                             <splide-slide>
-                                <img src="/img/gerigi.png" alt="" style="height: 400px">
+                                <img class="mb-5" src="/img/gerigi.png" alt="" style="height: 400px">
+                                <h3>GERIGI</h3>
+                                <p>MELAMBANGKAN BEM SEBAGAI RODA PENGGERAK</p>
                             </splide-slide>
                             <splide-slide>
-                                <img src="/img/empat_titik.png" alt="" style="height: 400px">
+                                <img class="mb-5" src="/img/empat_titik.png" alt="" style="height: 400px">
+                                <h3>EMPAT TITIK</h3>
+                                <p>MELAMBANGKAN EMPAT ELEMEN KEMA POLBAN</p>
                             </splide-slide>
                             <splide-slide>
-                                <img src="/img/benang_sari.png" alt="" style="height: 400px">
+                                <img class="mb-5" src="/img/benang_sari.png" alt="" style="height: 400px">
+                                <h3>BENANG SARI</h3>
+                                <p>MELAMBANGKAN TRIDHARMA PERGURUAN TINGGI</p>
                             </splide-slide>
                             <splide-slide>
-                                <img src="/img/5_kelopak.png" alt="" style="height: 400px">
+                                <img class="mb-5" src="/img/5_kelopak.png" alt="" style="height: 400px">
+                                <h3>LIMA KELOPAK</h3>
+                                <p>MELAMBANGKAN LIMA PERAN DAN FUNGSI MAHASISWA</p>
                             </splide-slide>
                         </splide>
 
@@ -139,7 +147,7 @@ export default {
                 type: 'loop',
                 rewind: true,
                 width: 1500,
-                height: 500,
+                height: 600,
                 perPage: 1,
                 padding: {
                     right: '17rem',
