@@ -34,10 +34,10 @@
                     <!--                <div class="col-md-4 offset-md-6">-->
                     <!--                <div>-->
                     <div class="row" style="padding-top: 100px">
-                        <div class="column ml-lg-5 mr-5" style="padding-top: 120px">
-                            <img src="/img/kabinetlogo.png" alt="" style="height: 500px">
+                        <div class="col col-md-5" style="padding-top: 220px">
+                            <img src="/img/kabinetlogo.png" class="img-fluid">
                         </div>
-                        <div class="column col-md-7" style="padding-left: 120px">
+                        <div class="col col-md-7" style="padding-left: 120px">
                             <div>
                                 <h3 class="font-weight-bold judul">VISI</h3>
                                 <div class="divider-custom mb-2"
@@ -92,22 +92,22 @@
 
                         <splide :options="options" class="text-center">
                             <splide-slide>
-                                <img class="mb-5" src="/img/gerigi.png" alt="" style="height: 400px">
+                                <img class="mb-5 img-fluid" src="/img/gerigi.png">
                                 <h3>GERIGI</h3>
                                 <p>MELAMBANGKAN BEM SEBAGAI RODA PENGGERAK</p>
                             </splide-slide>
                             <splide-slide>
-                                <img class="mb-5" src="/img/empat_titik.png" alt="" style="height: 400px">
+                                <img class="mb-5 img-fluid" src="/img/empat_titik.png">
                                 <h3>EMPAT TITIK</h3>
                                 <p>MELAMBANGKAN EMPAT ELEMEN KEMA POLBAN</p>
                             </splide-slide>
                             <splide-slide>
-                                <img class="mb-5" src="/img/benang_sari.png" alt="" style="height: 400px">
+                                <img class="mb-5 img-fluid" src="/img/benang_sari.png">
                                 <h3>BENANG SARI</h3>
                                 <p>MELAMBANGKAN TRIDHARMA PERGURUAN TINGGI</p>
                             </splide-slide>
                             <splide-slide>
-                                <img class="mb-5" src="/img/5_kelopak.png" alt="" style="height: 400px">
+                                <img class="mb-5 img-fluid" src="/img/5_kelopak.png">
                                 <h3>LIMA KELOPAK</h3>
                                 <p>MELAMBANGKAN LIMA PERAN DAN FUNGSI MAHASISWA</p>
                             </splide-slide>

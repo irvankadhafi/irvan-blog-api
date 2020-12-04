@@ -8602,6 +8602,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8615,7 +8623,7 @@ __webpack_require__.r(__webpack_exports__);
         type: 'loop',
         rewind: true,
         width: 1500,
-        height: 500,
+        height: 600,
         perPage: 1,
         padding: {
           right: '17rem',
@@ -61690,30 +61698,56 @@ var render = function() {
                       [
                         _c("splide-slide", [
                           _c("img", {
-                            staticStyle: { height: "400px" },
-                            attrs: { src: "/img/gerigi.png", alt: "" }
-                          })
+                            staticClass: "mb-5 img-fluid",
+                            attrs: { src: "/img/gerigi.png" }
+                          }),
+                          _vm._v(" "),
+                          _c("h3", [_vm._v("GERIGI")]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("MELAMBANGKAN BEM SEBAGAI RODA PENGGERAK")
+                          ])
                         ]),
                         _vm._v(" "),
                         _c("splide-slide", [
                           _c("img", {
-                            staticStyle: { height: "400px" },
-                            attrs: { src: "/img/empat_titik.png", alt: "" }
-                          })
+                            staticClass: "mb-5 img-fluid",
+                            attrs: { src: "/img/empat_titik.png" }
+                          }),
+                          _vm._v(" "),
+                          _c("h3", [_vm._v("EMPAT TITIK")]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("MELAMBANGKAN EMPAT ELEMEN KEMA POLBAN")
+                          ])
                         ]),
                         _vm._v(" "),
                         _c("splide-slide", [
                           _c("img", {
-                            staticStyle: { height: "400px" },
-                            attrs: { src: "/img/benang_sari.png", alt: "" }
-                          })
+                            staticClass: "mb-5 img-fluid",
+                            attrs: { src: "/img/benang_sari.png" }
+                          }),
+                          _vm._v(" "),
+                          _c("h3", [_vm._v("BENANG SARI")]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v("MELAMBANGKAN TRIDHARMA PERGURUAN TINGGI")
+                          ])
                         ]),
                         _vm._v(" "),
                         _c("splide-slide", [
                           _c("img", {
-                            staticStyle: { height: "400px" },
-                            attrs: { src: "/img/5_kelopak.png", alt: "" }
-                          })
+                            staticClass: "mb-5 img-fluid",
+                            attrs: { src: "/img/5_kelopak.png" }
+                          }),
+                          _vm._v(" "),
+                          _c("h3", [_vm._v("LIMA KELOPAK")]),
+                          _vm._v(" "),
+                          _c("p", [
+                            _vm._v(
+                              "MELAMBANGKAN LIMA PERAN DAN FUNGSI MAHASISWA"
+                            )
+                          ])
                         ])
                       ],
                       1
@@ -61855,13 +61889,13 @@ var staticRenderFns = [
               _c(
                 "div",
                 {
-                  staticClass: "column ml-lg-5 mr-5",
-                  staticStyle: { "padding-top": "120px" }
+                  staticClass: "col col-md-5",
+                  staticStyle: { "padding-top": "220px" }
                 },
                 [
                   _c("img", {
-                    staticStyle: { height: "500px" },
-                    attrs: { src: "/img/kabinetlogo.png", alt: "" }
+                    staticClass: "img-fluid",
+                    attrs: { src: "/img/kabinetlogo.png" }
                   })
                 ]
               ),
@@ -61869,7 +61903,7 @@ var staticRenderFns = [
               _c(
                 "div",
                 {
-                  staticClass: "column col-md-7",
+                  staticClass: "col col-md-7",
                   staticStyle: { "padding-left": "120px" }
                 },
                 [
@@ -81921,8 +81955,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/rezuki/Documents/project/ppl2/nuthink-news-remake/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/rezuki/Documents/project/ppl2/nuthink-news-remake/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/irvan/Desktop/BEM/nuthink-news-remake/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/irvan/Desktop/BEM/nuthink-news-remake/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
