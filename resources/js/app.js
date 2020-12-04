@@ -9,6 +9,7 @@ import store from './store'
 require('./store/subscriber')
 Vue.component('navigation', require('./components/Navigation.vue').default);
 Vue.component('createposts', require('./views/posts/Create.vue').default);
+Vue.component('listsposts', require('./views/posts/Table.vue').default);
 import routes from './router'
 Vue.config.productionTip = false;
 axios.defaults.baseURL='/api'

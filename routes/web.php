@@ -22,5 +22,6 @@ Route::view('/irvan/t','insertposts');
 
 Route::prefix('dashboard')->group(function (){
     Route::get('/', 'DashboardController@index')->name('dashboard.index');
+    Route::view('/posts', 'dashboard.posts.index',['title'=>'posts'])->name('posts.index');
 });
 
