@@ -80540,6 +80540,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_toasted__WEBPACK_IMPORTED_MOD
 __webpack_require__(/*! ./store/subscriber */ "./resources/js/store/subscriber.js");
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('navigation', __webpack_require__(/*! ./components/Navigation.vue */ "./resources/js/components/Navigation.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('createposts', __webpack_require__(/*! ./views/posts/Create.vue */ "./resources/js/views/posts/Create.vue")["default"]);
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.config.productionTip = false;
 axios.defaults.baseURL = '/api';
