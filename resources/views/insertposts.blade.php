@@ -10,7 +10,8 @@
 </head>
 <body>
 <div id="irvan">
-    <app></app>
+{{--    <navigation></navigation>--}}
+    <createposts></createposts>
 </div>
 <script src="{{mix('js/app.js')}}"></script>
 </body>

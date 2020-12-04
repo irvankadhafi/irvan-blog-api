@@ -8,6 +8,7 @@ Vue.use(Toasted)
 import store from './store'
 require('./store/subscriber')
 Vue.component('navigation', require('./components/Navigation.vue').default);
+Vue.component('createposts', require('./views/posts/Create.vue').default);
 import routes from './router'
 Vue.config.productionTip = false;
 axios.defaults.baseURL='/api'
