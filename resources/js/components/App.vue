@@ -3,7 +3,7 @@
         <navigation></navigation>
         <div>
             <transition name="page" mode="out-in">
-                <router-view />
+                <router-view :key="$route.fullPath" />
             </transition>
         </div>
     </div>

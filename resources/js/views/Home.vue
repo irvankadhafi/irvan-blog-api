@@ -147,7 +147,9 @@ export default {
                 type: 'loop',
                 rewind: true,
                 width: 1500,
-                height: 600,
+                // height: 600,
+                autoHeight: true,
+                // autoWidth: true,
                 perPage: 1,
                 padding: {
                     right: '17rem',

@@ -1,28 +1,65 @@
 <template>
     <div>
-        <div class="alert alert-danger" v-if="error && !success">
-            <p>There was an error, unable to complete registration.</p>
+        <div class="card-body">
+            <form autocomplete="off" @submit.prevent="register" method="post">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Masukkan nama" v-model="form.name">
+                </div>
+                <div class="form-group">
+                    <label for="username">username</label>
+                    <input type="text" id="username" class="form-control" placeholder="Masukkan username" v-model="form.username">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="form.email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" v-model="form.password">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password Confirmation</label>
+                    <input class="form-control" placeholder="Confirm Password" type="password" v-model="form.password_confirmation" name="password_confirmation">
+                </div>
+                <button type="submit" class="btn btn-default btn-success">Register</button>
+            </form>
         </div>
-        <div class="alert alert-success" v-if="success">
-            <p>Registration completed. You can now <router-link :to="{name:'login'}">sign in.</router-link></p>
-        </div>
-        <form autocomplete="off" @submit.prevent="register" v-if="!success" method="post">
-            <div class="form-group" v-bind:class="{ 'has-error': error && errors.name }">
-                <label for="name">Name</label>
-                <input type="text" id="name" class="form-control" v-model="name" required>
-                <span class="help-block" v-if="error && errors.name">{{ errors.name }}</span>
-            </div>
-            <div class="form-group" v-bind:class="{ 'has-error': error && errors.email }">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
-                <span class="help-block" v-if="error && errors.email">{{ errors.email }}</span>
-            </div>
-            <div class="form-group" v-bind:class="{ 'has-error': error && errors.password }">
-                <label for="password">Password</label>
-                <input type="password" id="password" class="form-control" v-model="password" required>
-                <span class="help-block" v-if="error && errors.password">{{ errors.password }}</span>
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
     </div>
 </template>
+<script>
+import {mapActions} from 'vuex'
+export default {
+    name: 'register',
+    components :{},
+    data(){
+        return{
+            form :{
+                name:'',
+                username:'',
+                email: '',
+                password: '',
+                password_confirmation: ''
+            }
+        }
+    },
+    methods : {
+        ...mapActions({
+            signUp : 'auth/signUp'
+        }),
+        register() {
+            this.signUp(this.form).then(()=>{
+                this.$toasted.show('Sukses Register',{
+                    type: 'success',
+                    duration: 3000,
+                })
+                this.$router.replace({
+                    name : 'signin'
+                })
+            }).catch(()=>{
+                console.log('failed')
+            })
+        }
+    }
+}
+</script>

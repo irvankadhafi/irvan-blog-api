@@ -8,9 +8,11 @@ use App\Http\Resources\PostResource;
 use App\Models\Post\Category;
 use App\Models\Post\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class PostController extends Controller
 {
@@ -35,18 +37,19 @@ class PostController extends Controller
     {
 //        $posts = auth()->user()->posts()->create($this->postStore());
 //        return $posts;
-        $validator = Validator::make($request->all(),[
+        $validator = Validator::make($request->all(),
+        [
             'title' => 'required|min:3|max:255',
             'body' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category'=>'required'
         ],
-            [
-                'title.required' => 'Masukkan Title Post!',
-                'body.required' => 'Masukkan isi Post!',
-                'image.required'=>'Input Image',
-                'category'=>'Masukkan ID Category'
-            ]);
+        [
+            'title.required' => 'Masukkan Title Post!',
+            'body.required' => 'Masukkan isi Post!',
+            'image.required'=>'Input Image',
+            'category'=>'Masukkan ID Category'
+        ]);
         if($validator->fails()){
             return response()->json(
                 [
@@ -69,6 +72,46 @@ class PostController extends Controller
                     'message' => 'Gagal ditambahkan',
                 ],400);
             }
+        }
+    }
+
+    public function createPost()
+    {
+        $data = [
+            'title' => 'Create Posts',
+            'category'=>Category::all()
+        ];
+        return view('dashboard.posts.create',$data);
+    }
+    public function savePost(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required|min:3|max:255',
+            'body' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category'=>'required'
+        ]);
+
+        //upload image
+        $image = $request->file('image');
+        $image->storeAs(public_path('uploads/posts/'), $image->hashName());
+        $currentUser = JWTAuth::parseToken()->authenticate();
+        return 'test'.($currentUser);
+        $blog = Post::create([
+            'title' => $request->title,
+            'slug'=> Str::slug($request->title),
+            'body'=> $request->body,
+            'category_id'=> $request->category,
+            'image' => $image->hashName(),
+            'user_id'=> $user
+        ]);
+
+        if($blog){
+            //redirect dengan pesan sukses
+            return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->route('posts.index')->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
 

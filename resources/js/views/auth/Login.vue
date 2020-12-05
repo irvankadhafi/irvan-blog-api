@@ -43,9 +43,10 @@ export default {
                     type: 'success',
                     duration: 3000,
                 })
-                this.$router.replace({
-                    name : 'posts.create'
-                })
+                // this.$router.replace({
+                //     name : 'github'
+                // })
+                location.href = 'http://github.com'
             }).catch(()=>{
                 console.log('failed')
             })

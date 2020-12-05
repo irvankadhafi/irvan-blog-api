@@ -8,6 +8,10 @@ import Login from '../views/auth/Login';
 import DetailPost from '../views/posts/Show';
 import store from '../store';
 import EditPost from '../views/posts/Edit';
+import Admin from '../views/admin/Index';
+import DashboardHome from '../views/admin/pages/DashboardPage';
+import AdminPosts from '../views/admin/pages/posts/Buat';
+import AdminPostsLists from '../views/admin/pages/posts/Daftar';
 function requireAuth(to,from,next) {
     if(!store.getters['auth/authenticated']){
         return next({
@@ -45,7 +49,7 @@ export default {
         },
         {
             path: '/register',
-            name: 'auth.register',
+            name: 'register',
             component: Register,
         },{
             path: '/login',
@@ -67,7 +71,28 @@ export default {
             path: '/posts/:postSlug/edit',
             name: 'posts.edit',
             component: EditPost
-        }
+        },
+        {
+            path:'/dashboard/',
+            name:'admin.index',
+            beforeEnter : requireAuth,
+            component: DashboardHome,
+        },
+        {
+            path:'/dashboard/home',
+            name : 'admin.home',
+            component: DashboardHome
+        },
+        {
+            path:'/dashboard/post/create',
+            name : 'admin.post.create',
+            component: AdminPosts
+        },
+        {
+            path:'/dashboard/post/lists',
+            name : 'admin.post.lists',
+            component: AdminPostsLists
+        },
 
     ],
     scrollBehavior() {

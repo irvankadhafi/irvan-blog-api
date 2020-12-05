@@ -13,6 +13,7 @@
                     <router-link class="nav-link" exact :to="{name : 'home'}">Home <span class="sr-only">(current)</span></router-link>
                 </li>
                 <li class="nav-item">
+<!--                    <a class="nav-link" :href="'about'">Departement</a>-->
                     <router-link class="nav-link" :to="{name:'pages.about'}">Departement</router-link>
                 </li>
                 <li class="nav-item">
