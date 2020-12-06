@@ -34,7 +34,7 @@
                     <!--                <div class="col-md-4 offset-md-6">-->
                     <!--                <div>-->
                     <div class="row" style="padding-top: 100px">
-                        <div class="col col-md-5" style="padding-top: 220px">
+                        <div class="col col-md-5" style="padding-top: 100px">
                             <img src="/img/kabinetlogo.png" class="img-fluid">
                         </div>
                         <div class="col col-md-7" style="padding-left: 120px">
@@ -89,42 +89,56 @@
             <div class="row" style="padding-top: 40px;padding-bottom: 40px">
                 <div class="col-md-8 offset-md-2">
                     <div>
-
-                        <splide :options="options" class="text-center">
+                        <splide :options="primaryOption" class="text-center">
                             <splide-slide>
-                                <img class="mb-5 img-fluid" src="/img/gerigi.png">
+                                <img class="mb-5 img-fluid" width="400px" src="/img/gerigi.png">
                                 <h3>GERIGI</h3>
                                 <p>MELAMBANGKAN BEM SEBAGAI RODA PENGGERAK</p>
                             </splide-slide>
                             <splide-slide>
-                                <img class="mb-5 img-fluid" src="/img/empat_titik.png">
+                                <img class="mb-lg-5 img-fluid" width="400px" src="/img/empat_titik.png">
                                 <h3>EMPAT TITIK</h3>
                                 <p>MELAMBANGKAN EMPAT ELEMEN KEMA POLBAN</p>
                             </splide-slide>
                             <splide-slide>
-                                <img class="mb-5 img-fluid" src="/img/benang_sari.png">
+                                <img class="mb-lg-5 img-fluid" width="400px" src="/img/benang_sari.png">
                                 <h3>BENANG SARI</h3>
                                 <p>MELAMBANGKAN TRIDHARMA PERGURUAN TINGGI</p>
                             </splide-slide>
                             <splide-slide>
-                                <img class="mb-5 img-fluid" src="/img/5_kelopak.png">
+                                <img class="mb-lg-5 img-fluid" width="400px" src="/img/5_kelopak.png">
                                 <h3>LIMA KELOPAK</h3>
                                 <p>MELAMBANGKAN LIMA PERAN DAN FUNGSI MAHASISWA</p>
                             </splide-slide>
                         </splide>
-
-                        <!--                        <h3 class="font-weight-bold text-center">Visi & Misi</h3>-->
-                        <h4>Visi</h4>
-                        <p style="font-size: 20px">
-                            Meningkatkan hardskill dan softskill serta menumbuhkan jiwa kewirausahaan anggota.
-                        </p>
-                        <h4>Misi</h4>
-                        <p style="font-size: 20px">
-                            <span class="text-misi">Poros Stabilitas Kabinet</span>
-                            Membentuk internal kabinet yang profesional dengan asas kekeluargaan.
-                        </p>
-                        <div class="divider-custom mx-auto"
-                             style="width: 12rem;background-color: #cbd5e0;border-radius: 9999px;border: 0 solid #e2e8f0;height: .25rem;"></div>
+                    </div>
+                    <div class="row" style="padding-top: 100px">
+                        <splide splide :options="secondaryOption">
+                            <splide-slide>
+                                <div class="row">
+                                    <div class="col">
+                                        <h3 class="font-weight-bold judul" style="padding-top: 130px">KETUA BEM</h3>
+                                        <h4>KOMARUDDIN</h4>
+                                        <h5>TEKNIK AERONAUTIKA 2018</h5>
+                                    </div>
+                                    <div class="col">
+                                        <img src="/img/komar.png" class="rounded img-fluid">
+                                    </div>
+                                </div>
+                            </splide-slide>
+                            <splide-slide>
+                                <div class="row">
+                                    <div class="col">
+                                        <h2 class="font-weight-bold judul" style="padding-top: 130px">WAKIL KETUA BEM</h2>
+                                        <h3>ABDILLAH</h3>
+                                        <h4>AKUTANSI 2018</h4>
+                                    </div>
+                                    <div class="col">
+                                        <img src="/img/abdil.png" class="rounded img-fluid">
+                                    </div>
+                                </div>
+                            </splide-slide>
+                        </splide>
                     </div>
                 </div>
             </div>
@@ -143,18 +157,32 @@ export default {
     name: "Home",
     data() {
         return {
-            options: {
+            primaryOption: {
                 type: 'loop',
                 rewind: true,
+                trimSpace: false,
+                focus: 'center',
                 width: 1500,
-                // height: 600,
                 autoHeight: true,
-                // autoWidth: true,
                 perPage: 1,
                 padding: {
-                    right: '17rem',
-                    left: '17rem',
+                    right: '15rem',
+                    left: '15rem',
                 },
+                gap: '1rem',
+            },
+            secondaryOption: {
+                type: 'fade',
+                pauseOnHover: true,
+                interval: 3000,
+                autoplay: true,
+                rewind: true,
+                width: 1280,
+                padding: {
+                    right: '7rem',
+                    left: '7rem',
+                },
+                perPage: 1,
                 gap: '1rem',
             },
         };
