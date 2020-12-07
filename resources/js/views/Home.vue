@@ -34,10 +34,10 @@
                     <!--                <div class="col-md-4 offset-md-6">-->
                     <!--                <div>-->
                     <div class="row" style="padding-top: 100px">
-                        <div class="col col-md-5" style="padding-top: 100px">
+                        <div class="col-md-5" style="padding-top: 100px">
                             <img src="/img/kabinetlogo.png" class="img-fluid">
                         </div>
-                        <div class="col col-md-7" style="padding-left: 120px">
+                        <div class="col-md-7" style="padding-left: 120px">
                             <div>
                                 <h3 class="font-weight-bold judul">VISI</h3>
                                 <div class="divider-custom mb-2"
@@ -88,10 +88,9 @@
 
             <div class="row" style="padding-top: 40px;padding-bottom: 40px">
                 <div class="col-md-8 offset-md-2">
-                    <div>
                         <splide :options="primaryOption" class="text-center">
                             <splide-slide>
-                                <img class="mb-5 img-fluid" width="400px" src="/img/gerigi.png">
+                                <img class="mb-lg-5 img-fluid" width="400px" src="/img/gerigi.png">
                                 <h3>GERIGI</h3>
                                 <p>MELAMBANGKAN BEM SEBAGAI RODA PENGGERAK</p>
                             </splide-slide>
@@ -111,32 +110,31 @@
                                 <p>MELAMBANGKAN LIMA PERAN DAN FUNGSI MAHASISWA</p>
                             </splide-slide>
                         </splide>
-                    </div>
                 </div>
                 <div class="col-md-8 offset-md-2">
                     <div class="row" style="padding-top: 100px">
                         <splide splide :options="secondaryOption">
                             <splide-slide>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <h2 class="font-weight-bold judul" style="padding-top: 130px">KETUA BEM</h2>
                                         <h3>KOMARUDDIN</h3>
                                         <h4>TEKNIK AERONAUTIKA 2018</h4>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <img src="/img/komar.png" class="rounded img-fluid">
                                     </div>
                                 </div>
                             </splide-slide>
                             <splide-slide>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <h2 class="font-weight-bold judul" style="padding-top: 130px">WAKIL KETUA
                                             BEM</h2>
                                         <h3>ABDILLAH</h3>
                                         <h4>AKUTANSI 2018</h4>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <img src="/img/abdil.png" class="rounded img-fluid">
                                     </div>
                                 </div>
@@ -149,22 +147,16 @@
                 <section class="video-section-bg">
                     <div class="container">
                         <div class="row" style="padding-top: 100px">
-                            <div class="col col-md-5" style="padding-top: 120px">
+                            <div class="col-md-5" style="padding-top: 70px">
                                 <!--                                <div class="text-center" style="margin-top:15vh;">-->
-                                <h2 class="font-weight-bold video-title">WATCH OUR PROFILE</h2>
+                                <h2 class="font-weight-bold video-title" style="font-size:5vh">WATCH OUR PROFILE</h2>
                                 <!--                                </div>-->
                             </div>
-                            <div class="col col-md-7" style="padding-left: 120px">
+                            <div class="col-md-7" style="padding-left: 120px">
                                 <div class="sizer">
                                     <div class="embed-responsive embed-responsive-16by9">
-                                        <iframe class="embed-responsive-item"
-                                                src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
-                                                allowfullscreen></iframe>
+                                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/HKLJ-3anBeI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     </div>
-                                </div>
-                                <div>
-                                    <h4 class="font-weight-bold video-title mt-4">Kabinet Poros Perjuangan</h4>
-                                    <p class="font-weight-bold text-white">Layaknya perjuangan yang harus bersatu padu pada satu poros</p>
                                 </div>
                             </div>
                         </div>
@@ -188,6 +180,9 @@ export default {
         return {
             primaryOption: {
                 type: 'loop',
+                pauseOnHover: true,
+                interval: 3000,
+                autoplay: true,
                 rewind: true,
                 trimSpace: false,
                 focus: 'center',
