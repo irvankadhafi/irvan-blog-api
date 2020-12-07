@@ -112,14 +112,16 @@
                             </splide-slide>
                         </splide>
                     </div>
+                </div>
+                <div class="col-md-8 offset-md-2">
                     <div class="row" style="padding-top: 100px">
                         <splide splide :options="secondaryOption">
                             <splide-slide>
                                 <div class="row">
                                     <div class="col">
-                                        <h3 class="font-weight-bold judul" style="padding-top: 130px">KETUA BEM</h3>
-                                        <h4>KOMARUDDIN</h4>
-                                        <h5>TEKNIK AERONAUTIKA 2018</h5>
+                                        <h2 class="font-weight-bold judul" style="padding-top: 130px">KETUA BEM</h2>
+                                        <h3>KOMARUDDIN</h3>
+                                        <h4>TEKNIK AERONAUTIKA 2018</h4>
                                     </div>
                                     <div class="col">
                                         <img src="/img/komar.png" class="rounded img-fluid">
@@ -129,7 +131,8 @@
                             <splide-slide>
                                 <div class="row">
                                     <div class="col">
-                                        <h2 class="font-weight-bold judul" style="padding-top: 130px">WAKIL KETUA BEM</h2>
+                                        <h2 class="font-weight-bold judul" style="padding-top: 130px">WAKIL KETUA
+                                            BEM</h2>
                                         <h3>ABDILLAH</h3>
                                         <h4>AKUTANSI 2018</h4>
                                     </div>
@@ -141,6 +144,32 @@
                         </splide>
                     </div>
                 </div>
+            </div>
+            <div>
+                <section class="video-section-bg">
+                    <div class="container">
+                        <div class="row" style="padding-top: 100px">
+                            <div class="col col-md-5" style="padding-top: 120px">
+                                <!--                                <div class="text-center" style="margin-top:15vh;">-->
+                                <h2 class="font-weight-bold video-title">WATCH OUR PROFILE</h2>
+                                <!--                                </div>-->
+                            </div>
+                            <div class="col col-md-7" style="padding-left: 120px">
+                                <div class="sizer">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embed-responsive-item"
+                                                src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"
+                                                allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h4 class="font-weight-bold video-title mt-4">Kabinet Poros Perjuangan</h4>
+                                    <p class="font-weight-bold text-white">Layaknya perjuangan yang harus bersatu padu pada satu poros</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
@@ -215,6 +244,11 @@ export default {
     color: #2D4EC2;
 }
 
+.video-title {
+    font-family: 'Dosis', sans-serif;
+    color: white;
+}
+
 .jumbotron {
     border-radius: 0rem;
     height: 70vh;
@@ -225,5 +259,20 @@ export default {
     background-repeat: no-repeat;
     background-attachment: fixed;
     z-index: 0;
+}
+
+.video-section-bg {
+    border-radius: 0rem;
+    height: 70vh;
+    position: relative;
+    background-image: url('/img/video-area-bg.png');
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: 100% 100%;
+    z-index: 0;
+}
+
+.sizer {
+    width: 600px;
 }
 </style>
