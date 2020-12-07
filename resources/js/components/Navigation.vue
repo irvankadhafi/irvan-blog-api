@@ -14,7 +14,7 @@
                 </li>
                 <li class="nav-item">
 <!--                    <a class="nav-link" :href="'about'">Departement</a>-->
-                    <router-link class="nav-link" :to="{name:'pages.about'}">Departement</router-link>
+                    <router-link class="nav-link" :to="{name:'pages.about'}">Departemen</router-link>
                 </li>
                 <li class="nav-item">
                     <router-link class="nav-link" :to="{name:'pages.about'}">Ormawa</router-link>
@@ -29,24 +29,24 @@
                     <router-link class="nav-link" :to="{name:'pages.about'}">Contact</router-link>
                 </li>
                 <template v-if="authenticated">
-                    <li class="nav-item">
-                        <router-link class="nav-link" :to="{name:'posts.create'}">New Post</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" :to="{name:'posts.table'}">List Posts</router-link>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <router-link class="nav-link" :to="{name:'posts.create'}">New Post</router-link>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <router-link class="nav-link" :to="{name:'posts.table'}">List Posts</router-link>-->
+<!--                    </li>-->
                     <li class="nav-item">
                         <span class="nav-link">Hi !{{user.name}}</span>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" @click.prevent="signOut">Logout</a>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#" @click.prevent="signOut">Logout</a>-->
+<!--                    </li>-->
                 </template>
-                <template v-else>
-                    <li class="nav-item">
-                        <router-link class="nav-link" :to="{name:'signin'}">Login</router-link>
-                    </li>
-                </template>
+<!--                <template v-else>-->
+<!--                    <li class="nav-item">-->
+<!--                        <router-link class="nav-link" :to="{name:'signin'}">Login</router-link>-->
+<!--                    </li>-->
+<!--                </template>-->
             </ul>
 <!--            <form class="form-inline my-2 my-lg-0">-->
 <!--                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
