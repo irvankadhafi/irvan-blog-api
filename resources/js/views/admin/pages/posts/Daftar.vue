@@ -22,15 +22,20 @@
             </tbody>
         </table>
     </div>
+    <div class="d-flex justify-content-center">
+        <pagination :data="posts" @pagination-change-page="getPosts"></pagination>
+    </div>
 </div>
 </template>
 
 <script>
+import pagination from 'laravel-vue-pagination';
 import TitleHeader from "../../components/Title/TitleHeader.vue";
 import LoadingComponent from "../../components/Loading/LoadingComponent.vue";
 export default {
     name: "Daftar",
     components: {
+        pagination,
         TitleHeader,
         LoadingComponent,
     },
@@ -44,8 +49,8 @@ export default {
 
     },
     methods:{
-        async getPosts(){
-            let response = await axios.get('/posts')
+        async getPosts(page=1){
+            let response = await axios.get('/posts?page='+page)
             console.log(response.data)
             this.posts = response.data;
         }
