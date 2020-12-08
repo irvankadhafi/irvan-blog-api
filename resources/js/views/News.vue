@@ -37,7 +37,9 @@
 <!--                            <div class="row">-->
 <!--                            </div>-->
 <!--                            Paginate-->
-                            <pagination :data="posts" @pagination-change-page="getPosts"></pagination>
+                            <div class="d-flex justify-content-center">
+                                <pagination :data="posts" @pagination-change-page="getPosts"></pagination>
+                            </div>
 
                         </div>
                         <div class="col-md-3">
