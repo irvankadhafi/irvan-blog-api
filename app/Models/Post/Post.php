@@ -22,6 +22,11 @@ class Post extends Model
 //        return 'id';
 //    }
 
+    public function getDatePost($date)
+    {
+        return $date ? date('m/d/Y', strtotime($date)) : null;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

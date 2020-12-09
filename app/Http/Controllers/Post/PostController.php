@@ -213,4 +213,32 @@ class PostController extends Controller
             'image' => $imageName
         ];
     }
+
+    public function search(Request $request){
+        {
+            if ( $request->input('client') ) {
+                return Post::select('id', 'title', 'category_id', 'user_id', 'slug')->get();
+            }
+
+            $columns = ['title', 'category_id', 'user_id', 'slug'];
+
+            $length = $request->input('length');
+            $column = $request->input('column'); //Index
+            $dir = $request->input('dir');
+            $searchValue = $request->input('search');
+
+            $query = Post::select('id', 'title', 'category_id', 'user_id', 'slug')->orderBy($columns[$column], $dir);
+
+            if ($searchValue) {
+                $query->where(function($query) use ($searchValue) {
+                    $query->where('title', 'like', '%' . $searchValue . '%')
+                        ->orWhere('category_id', 'like', '%' . $searchValue . '%')
+                        ->orWhere('user_id', 'like', '%' . $searchValue . '%');
+                });
+            }
+
+            $posts = $query->paginate($length);
+            return ['data' => $posts, 'draw' => $request->input('draw')];
+        }
+    }
 }

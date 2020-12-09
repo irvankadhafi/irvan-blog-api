@@ -20,5 +20,6 @@ Route::get('info','WebController@index');
 
 Route::get('posts/{post:slug}','Post\PostController@show')->name('posts.show');
 Route::get('posts','Post\PostController@index');
+Route::get('search/posts','Post\PostController@search');
 
 Route::get('auth/user','UserController');
