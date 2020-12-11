@@ -8789,6 +8789,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -63339,7 +63340,7 @@ var staticRenderFns = [
                 },
                 [
                   _vm._v(
-                    "\n                    BEM KEMA POLBAN 2019/2020\n                "
+                    "\n                    BEM KEMA POLBAN 2019/2020\n                    REzzsdfjks\n                "
                   )
                 ]
               ),

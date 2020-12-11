@@ -6,6 +6,7 @@
                     <h1 class="text-white" style="font-family: 'Dosis', sans-serif;font-size: 100px">
                         <!--                        <div v-html="info.title"></div>-->
                         BEM KEMA POLBAN 2019/2020
+                        REzzsdfjks
                     </h1>
                     <!--                    <h5 class="text-white" style="margin-top: 20px;line-height: 35px">{{info.description}}</h5>-->
                     <h5 class="text-white" style="margin-top: 20px;line-height: 35px;font-size: 20px">Poros Juang</h5>
