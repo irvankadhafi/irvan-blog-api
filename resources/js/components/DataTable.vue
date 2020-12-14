@@ -1,16 +1,19 @@
 <template>
-    <table class="table is-bordered data-table">
-        <thead>
-        <tr>
-            <th v-for="column in columns" :key="column.name" @click="$emit('sort', column.name)"
-                :class="sortKey === column.name ? (sortOrders[column.name] > 0 ? 'sorting_asc' : 'sorting_desc') : 'sorting'"
-                :style="'width:'+column.width+';'+'cursor:pointer;'">
-                {{column.label}}
-            </th>
-        </tr>
-        </thead>
-        <slot></slot>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th v-for="column in columns" :key="column.name" @click="$emit('sort', column.name)"
+                    :class="sortKey === column.name ? (sortOrders[column.name] > 0 ? 'sorting_asc' : 'sorting_desc') : 'sorting'"
+                    :style="'width:'+column.width+';'+'cursor:pointer;'">
+                    {{column.label}}
+                </th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <slot></slot>
+        </table>
+    </div>
 </template>
 
 <script>
