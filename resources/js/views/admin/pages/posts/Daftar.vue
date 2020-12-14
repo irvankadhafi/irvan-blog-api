@@ -1,7 +1,7 @@
 <template>
     <div class="projects">
         <div class="tableFilters">
-            <input class="input" type="text" v-model="tableData.search" placeholder="Search Table"
+            <input class="input" type="text" v-model="tableData.search" placeholder="Cari Postingan"
                    @input="getPosts()">
 
             <div class="control">
@@ -30,25 +30,26 @@
             </tr>
             </tbody>
         </datatable>
-        <pagination :pagination="pagination"
-                    @prev="getPosts(pagination.prevPageUrl)"
-                    @next="getPosts(pagination.nextPageUrl)">
-        </pagination>
+            <pagination :pagination="pagination"
+                        @prev="getPosts(pagination.prevPageUrl)"
+                        @next="getPosts(pagination.nextPageUrl)">
+            </pagination>
     </div>
 </template>
 
 <script>
 import DataTable from "../../../../components/DataTable";
 import Pagination from "../../../../components/Pagination";
+
 export default {
-    components: { datatable: DataTable, pagination: Pagination },
+    components: { datatable: DataTable, pagination: Pagination},
     created() {
         this.getPosts();
     },
     data() {
         let sortOrders = {};
         let columns = [
-            {width: '25%', label: 'Title', name: 'title' },
+            {width: '50%', label: 'Title', name: 'title' },
             {width: '25%', label: 'Category', name: 'category_id'},
             {width: '25%', label: 'Author', name: 'user_id'}
         ];
