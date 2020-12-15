@@ -16,8 +16,9 @@
             <tbody>
             <tr v-for="post in posts" :key="post.slug">
                 <td>
-                    <router-link :to="{name:'posts.detail', params: {postSlug : post.slug}}">{{ post.title }}
-                    </router-link>
+<!--                    <router-link :to="{name:'posts.detail', params: {postSlug : post.slug}}">{{ post.title }}-->
+<!--                    </router-link>-->
+                    {{post.title}}
                 </td>
 <!--                <td>{{post.title}}</td>-->
                 <td>{{post.category.name}}</td>
