@@ -10,6 +10,7 @@ import store from './store'
 require('./store/subscriber')
 Vue.component('navigation', require('./components/Navigation.vue').default);
 Vue.component('createposts', require('./views/posts/Create.vue').default);
+Vue.component('editposts', require('./views/posts/Edit.vue').default);
 Vue.component('listsposts', require('./views/posts/Table.vue').default);
 Vue.component('login', require('./views/auth/Login').default);
 import routes from './router'

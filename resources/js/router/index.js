@@ -11,6 +11,7 @@ import EditPost from '../views/posts/Edit';
 import Admin from '../views/admin/Index';
 import DashboardHome from '../views/admin/pages/DashboardPage';
 import AdminPosts from '../views/admin/pages/posts/Buat';
+import AdminEditPosts from '../views/admin/pages/posts/Edit';
 import AdminPostsLists from '../views/admin/pages/posts/Daftar';
 function requireAuth(to,from,next) {
     if(!store.getters['auth/authenticated']){
@@ -70,7 +71,8 @@ export default {
         {
             path: '/posts/:postSlug/edit',
             name: 'posts.edit',
-            component: EditPost
+            component: AdminEditPosts,
+            beforeEnter : requireAuth
         },
         {
             path:'/dashboard/',
