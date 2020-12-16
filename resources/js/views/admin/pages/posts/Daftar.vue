@@ -1,17 +1,28 @@
 <template>
     <div class="projects">
         <div class="tableFilters">
-            <input class="input" type="text" v-model="tableData.search" placeholder="Cari Postingan"
-                   @input="getPosts()">
-
-            <div class="control">
-                <div class="select">
-                    <select v-model="tableData.length" @change="getPosts()">
-                        <option v-for="(records, index) in perPage" :key="index" :value="records">{{records}}</option>
-                    </select>
+            <div class="row">
+                <div class="col-md-5 mt-5">
+                    <input class="input" type="text" v-model="tableData.search" placeholder="Cari Postingan"
+                           @input="getPosts()">
+                    <div class="control">
+                        <div class="select">
+                            <select v-model="tableData.length" @change="getPosts()">
+                                <option v-for="(records, index) in perPage" :key="index" :value="records">{{records}}</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                </div>
         </div>
+        <section class="section">
+            <title-header title="List Post" />
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-md-12 m-auto">
+                        <div class="card">
+                            <div class="card-header">List Post</div>
+                            <div class="card-body">
         <datatable :columns="columns" :sortKey="sortKey" :sortOrders="sortOrders" @sort="sortBy">
             <tbody>
             <tr v-for="post in posts" :key="post.slug">
@@ -31,6 +42,12 @@
             </tr>
             </tbody>
         </datatable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
             <pagination :pagination="pagination"
                         @prev="getPosts(pagination.prevPageUrl)"
                         @next="getPosts(pagination.nextPageUrl)">
