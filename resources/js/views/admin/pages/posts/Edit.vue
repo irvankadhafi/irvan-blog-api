@@ -1,9 +1,9 @@
 <template>
     <div>
-        <loading-component v-show="isLoading" />
+        <loading-component v-show="isLoading"/>
         <div v-show="!isLoading">
             <section class="section">
-                <title-header title="Edit Post" />
+                <title-header title="Edit Post"/>
                 <div class="section-body">
                     <div class="row">
                         <div class="col-md-8 m-auto">
@@ -12,15 +12,21 @@
                                 <div class="card-body">
                                     <form>
                                         <div class="form-group">
-                                            <input type="title" v-model="form.title" ref="title" class="form-control" id="title" placeholder="Enter title" required>
+                                            <input id="title" ref="title" v-model="form.title" class="form-control"
+                                                   placeholder="Enter title" required type="title">
                                         </div>
 
                                         <div class="form-group">
-                                            <select v-model="form.category" ref="category" name="category" id="category" class="form-control">
-<!--                                                <option disabled selected>Choose One!</option>-->
-                                                <option v-for="category in categories" :key="category.id" :value="category.id">
-                                                    {{category.name}}
-                                                </option>
+                                            <select id="category" ref="category"
+                                                    class="form-control" name="category">
+                                                <!--                                                <option disabled selected>Choose One!</option>-->
+                                                <option :value="form.category.name" v-text="form.category"></option>
+                                                <template v-for="category in categories">
+
+                                                    <option v-if="form.categoryId !== category.id" :key="category.id" :value="category.id">
+                                                        {{ category.name }}
+                                                    </option>
+                                                </template>
                                             </select>
                                         </div>
 
@@ -28,12 +34,24 @@
                                             <vue-editor v-model="form.body"></vue-editor>
                                         </div>
 
-                                        <div class="custom-file mb-3">
-                                            <input type="file" ref="image" name="image" class="custom-file-input" id="image" required>
-                                            <label class="custom-file-label" >Choose file...</label>
+                                        <div>
+                                            <b-form-file multiple>
+                                                <template slot="file-name" slot-scope="{ names }">
+                                                    <b-badge variant="dark">{{ names[0] }}</b-badge>
+                                                    <b-badge v-if="names.length > 1" variant="dark" class="ml-1">
+                                                        + {{ names.length - 1 }} More files
+                                                    </b-badge>
+                                                </template>
+                                            </b-form-file>
                                         </div>
 
-                                        <button type="submit" @click.prevent="create" class="btn btn-primary block">
+                                        <div class="custom-file mb-3">
+                                            <input id="image" ref="image" class="custom-file-input" name="image"
+                                                   required type="file">
+                                            <label class="custom-file-label">Choose file...</label>
+                                        </div>
+
+                                        <button class="btn btn-primary block" type="submit" @click.prevent="create">
                                             Submit
                                         </button>
                                     </form>
@@ -48,7 +66,7 @@
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor'
+import {VueEditor} from 'vue2-editor'
 import TitleHeader from "../../components/Title/TitleHeader.vue";
 import LoadingComponent from "../../components/Loading/LoadingComponent.vue";
 
@@ -58,17 +76,17 @@ export default {
         TitleHeader,
         LoadingComponent
     },
-    data(){
+    data() {
         console.log(localStorage.getItem('token'))
-        return{
+        return {
             slug: this.$route.params.postSlug,
             form: {},
             categories: [],
-            theErrors:[],
+            theErrors: [],
             editorData: '<p>Content of the editor.</p>',
             customToolbar: [
                 ['bold', 'italic', 'underline'],
-                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                [{'list': 'ordered'}, {'list': 'bullet'}],
                 ['image', 'code-block']
             ]
         };
@@ -78,17 +96,17 @@ export default {
         this.getPosts();
     },
     methods: {
-        async getCategories(){
+        async getCategories() {
             let response = await axios.get('/categories')
             console.log(response.data);
-            if (response.status === 200){
+            if (response.status === 200) {
                 this.categories = response.data.data
             }
         },
         async getPosts() {
             let response = await axios.get('/posts/' + this.slug);
             console.log(response.data);
-            if (response.status === 200){
+            if (response.status === 200) {
                 this.form = response.data.data
             }
         },
@@ -101,14 +119,14 @@ export default {
             axios
                 .post("/update-post/:id", formData, {
                     headers: {
-                        'Authorization' : 'Bearer' + localStorage.getItem('token')
+                        'Authorization': 'Bearer' + localStorage.getItem('token')
                     }
                 })
                 .then(response => {
                     this.successful = true;
                     this.error = false;
                     this.errors = [];
-                    this.$toasted.show(response.data.message,{
+                    this.$toasted.show(response.data.message, {
                         type: 'success',
                         duration: 3000,
                     })
