@@ -34,21 +34,15 @@
                                             <vue-editor v-model="form.body"></vue-editor>
                                         </div>
 
-                                        <div>
-                                            <b-form-file multiple>
-                                                <template slot="file-name" slot-scope="{ names }">
-                                                    <b-badge variant="dark">{{ names[0] }}</b-badge>
-                                                    <b-badge v-if="names.length > 1" variant="dark" class="ml-1">
-                                                        + {{ names.length - 1 }} More files
-                                                    </b-badge>
-                                                </template>
-                                            </b-form-file>
-                                        </div>
-
-                                        <div class="custom-file mb-3">
-                                            <input id="image" ref="image" class="custom-file-input" name="image"
-                                                   required type="file">
-                                            <label class="custom-file-label">Choose file...</label>
+                                        <div class="form-group">
+                                            <div v-if="!image">
+                                                <p>Select an image</p>
+                                                <input type="file" @change="onFileChange">
+                                            </div>
+                                            <div v-else>
+                                                <img :src="image" />
+                                                <button @click="removeImage">Remove image</button>
+                                            </div>
                                         </div>
 
                                         <button class="btn btn-primary block" type="submit" @click.prevent="create">
@@ -69,16 +63,19 @@
 import {VueEditor} from 'vue2-editor'
 import TitleHeader from "../../components/Title/TitleHeader.vue";
 import LoadingComponent from "../../components/Loading/LoadingComponent.vue";
+import FileInput from "./FileInput";
 
 export default {
     components: {
         VueEditor,
         TitleHeader,
-        LoadingComponent
+        LoadingComponent,
+        FileInput
     },
     data() {
         console.log(localStorage.getItem('token'))
         return {
+            image: '',
             slug: this.$route.params.postSlug,
             form: {},
             categories: [],
@@ -94,8 +91,28 @@ export default {
     mounted() {
         this.getCategories();
         this.getPosts();
+        this.image=this.form.image;
     },
     methods: {
+        onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            this.createImage(files[0]);
+        },
+        createImage(file) {
+            var image = new Image();
+            var reader = new FileReader();
+            var vm = this;
+
+            reader.onload = (e) => {
+                vm.image = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        },
+        removeImage: function (e) {
+            this.image = '';
+        },
         async getCategories() {
             let response = await axios.get('/categories')
             console.log(response.data);
@@ -105,9 +122,10 @@ export default {
         },
         async getPosts() {
             let response = await axios.get('/posts/' + this.slug);
-            console.log(response.data);
+            console.log("CUY"+ response.data.data.image);
             if (response.status === 200) {
                 this.form = response.data.data
+                this.image = "/uploads/posts/"+response.data.data.image
             }
         },
         create() {
@@ -149,5 +167,10 @@ export default {
 </script>
 
 <style scoped>
-
+img {
+    width: 30%;
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+}
 </style>
