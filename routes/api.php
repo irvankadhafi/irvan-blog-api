@@ -12,7 +12,8 @@ Route::namespace('Auth')->group(function (){
 
 Route::namespace('Post')->middleware('auth:api')->group(function (){
     Route::post('new-post','PostController@store');
-    Route::post('update-post/{post:id}','PostController@update');
+//    Route::post('update-post/{post:id}','PostController@update');
+    Route::patch('update-post/{post:slug}','PostController@update');
     Route::delete('delete-post/{post:id}','PostController@destroy');
 });
 Route::get('categories','Post\CategoryController@index');

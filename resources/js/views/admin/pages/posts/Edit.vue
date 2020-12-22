@@ -17,10 +17,10 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <select id="category" ref="category"
+                                            <select @change="getCategory" id="category" ref="category"
                                                     class="form-control" name="category">
                                                 <!--                                                <option disabled selected>Choose One!</option>-->
-                                                <option :value="form.category.name" v-text="form.category"></option>
+                                                <option :value="form.categoryId" v-text="form.category"></option>
                                                 <template v-for="category in categories">
 
                                                     <option v-if="form.categoryId !== category.id" :key="category.id" :value="category.id">
@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
 
-                                        <button class="btn btn-primary block" type="submit" @click.prevent="create">
+                                        <button class="btn btn-primary block" type="submit" @click.prevent="update">
                                             Submit
                                         </button>
                                     </form>
@@ -62,8 +62,8 @@
 <script>
 import {VueEditor} from 'vue2-editor'
 import TitleHeader from "../../components/Title/TitleHeader.vue";
-import LoadingComponent from "../../components/Loading/LoadingComponent.vue";
-import FileInput from "./FileInput";
+import LoadingComponent from "../../components/Loading/LoadingComponent";
+import FileInput from "../../../../components/FileInput";
 
 export default {
     components: {
@@ -77,8 +77,10 @@ export default {
         return {
             image: '',
             slug: this.$route.params.postSlug,
-            form: {},
+            form: [],
             categories: [],
+            selectedCategory: '',
+            selectedImage: '',
             theErrors: [],
             editorData: '<p>Content of the editor.</p>',
             customToolbar: [
@@ -95,15 +97,16 @@ export default {
     },
     methods: {
         onFileChange(e) {
-            var files = e.target.files || e.dataTransfer.files;
+            let files = e.target.files || e.dataTransfer.files;
             if (!files.length)
                 return;
             this.createImage(files[0]);
+            this.selectedImage = e.target.files || e.dataTransfer.files;
         },
         createImage(file) {
-            var image = new Image();
-            var reader = new FileReader();
-            var vm = this;
+            let image = new Image();
+            let reader = new FileReader();
+            let vm = this;
 
             reader.onload = (e) => {
                 vm.image = e.target.result;
@@ -128,18 +131,22 @@ export default {
                 this.image = "/uploads/posts/"+response.data.data.image
             }
         },
-        create() {
-            const formData = new FormData();
-            formData.append("title", this.$refs.title.value);
-            formData.append("category", this.$refs.category.value);
-            formData.append("body", this.editorData);
-            formData.append("image", this.$refs.image.files[0]);
-            axios
-                .post("/update-post/:id", formData, {
-                    headers: {
-                        'Authorization': 'Bearer' + localStorage.getItem('token')
-                    }
-                })
+        getCategory(e)  {
+            this.selectedCategory = Number(e.target.value)
+        },
+        async update() {
+            // console.log("updated")
+            // this.form['categoryId'] = this.selectedCategory || this.form.categoryId
+            // this.form['image'] = this.selectedImage || this.form.image
+            // console.log(this.form)
+
+            // let response = await axios.patch("/update-post/"+this.form.post_id, this.form)
+            await axios
+                .patch(`/update-post/${this.$route.params.postSlug}`, this.form, {
+                headers: {
+                    'Authorization': 'Bearer' + localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     this.successful = true;
                     this.error = false;
@@ -149,6 +156,7 @@ export default {
                         duration: 3000,
                     })
                     // this.$router.push({name: 'posts'});
+                    console.log(response.data)
                 })
                 .catch(error => {
                     if (!_.isEmpty(error.response)) {
@@ -159,8 +167,43 @@ export default {
                         }
                     }
                 });
-            this.$refs.title.value = "";
-            this.editorData = "";
+            // if(response.status === 200) {
+            //     console.log(response.data)
+            // }
+
+            // let response = await axios.post(`/update-post/:id`)
+            // const formData = new FormData();
+            // formData.append("title", this.form.title.value);
+            // formData.append("category", this.form.category.value);
+            // formData.append("body", this.editorData);
+            // formData.append("image", this.form.image.files[0]);
+            // axios
+            //     .post("/update-post/:id", formData, {
+            //         headers: {
+            //             'Authorization': 'Bearer' + localStorage.getItem('token')
+            //         }
+            //     })
+            //     .then(response => {
+            //         this.successful = true;
+            //         this.error = false;
+            //         this.errors = [];
+            //         this.$toasted.show(response.data.message, {
+            //             type: 'success',
+            //             duration: 3000,
+            //         })
+            //         // this.$router.push({name: 'posts'});
+            //     })
+            //     .catch(error => {
+            //         if (!_.isEmpty(error.response)) {
+            //             if ((error.response.status = 422)) {
+            //                 this.errors = error.response.data.errors;
+            //                 this.successful = false;
+            //                 this.error = true;
+            //             }
+            //         }
+            //     });
+            // this.$refs.title.value = "";
+            // this.editorData = "";
         }
     }
 }

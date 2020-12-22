@@ -133,50 +133,71 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Post $post)
+    public function update(Post $post)
     {
-        //validate data
-        $validator = Validator::make($request->all(), [
-            'title'     => 'required',
-            'body'   => 'required',
-        ],
-            [
-                'title.required' => 'Masukkan Title Post !',
-                'body.required' => 'Masukkan Content Post !',
-            ]
-        );
-        if($validator->fails()) {
+//        return $post;
+        request()->validate([
+                'title' => 'required|min:3|max:255',
+                'body' => 'required',
+//                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
 
-            return response()->json([
-                'success' => false,
-                'message' => 'Silahkan Isi Bidang Yang Kosong',
-                'data'    => $validator->errors()
-            ],400);
+        $category = Category::findOrFail(request('categoryId'));
 
-        }else //Jika Berhasil
-        {
-            $folderPath = public_path('uploads/posts/');
-            if ($request->has('image')) {
-                //Delete foto dan foldernya yang lama
-                $image_path = $folderPath.'/'.$post->image;
-                if(file_exists($image_path)) // check if the image indeed exists
-                    unlink($image_path);
-                //Update foto Baru
-                $imageName = time().'.'.request()->image->getClientOriginalExtension();
-                request()->image->move(public_path('uploads/posts/'), $imageName);
+        $post->update([
+            'category_id' => $category->id,
+            'title' => request('title'),
+            'body' => request('body'),
+//            'image' => request('image'),
+        ]);
 
-                $post->update($this->postStore($imageName));
-            }else
-            {
-                $post->update([
-                    'title' => request('title'),
-                    'slug'=> Str::slug(request('title')),
-                    'body'=>request('body'),
-                    'category_id'=>request('category')
-                ]);
-            }
-        }
-        return new PostResource($post);
+        return response()->json([
+            'message' => 'Your post was updated',
+            'post' => $post
+        ]);
+
+
+//        $validator = Validator::make($request->all(), [
+//            'title'     => 'required',
+//            'body'   => 'required',
+//        ],
+//            [
+//                'title.required' => 'Masukkan Title Post !',
+//                'body.required' => 'Masukkan Content Post !',
+//            ]
+//        );
+//        if($validator->fails()) {
+//
+//            return response()->json([
+//                'success' => false,
+//                'message' => 'Silahkan Isi Bidang Yang Kosong',
+//                'data'    => $validator->errors()
+//            ],400);
+//
+//        }else //Jika Berhasil
+//        {
+//            $folderPath = public_path('uploads/posts/');
+//            if ($request->has('image')) {
+//                //Delete foto dan foldernya yang lama
+//                $image_path = $folderPath.'/'.$post->image;
+//                if(file_exists($image_path)) // check if the image indeed exists
+//                    unlink($image_path);
+//                //Update foto Baru
+//                $imageName = time().'.'.request()->image->getClientOriginalExtension();
+//                request()->image->move(public_path('uploads/posts/'), $imageName);
+//
+//                $post->update($this->postStore($imageName));
+//            }else
+//            {
+//                $post->update([
+//                    'title' => request('title'),
+//                    'slug'=> Str::slug(request('title')),
+//                    'body'=>request('body'),
+//                    'category_id'=>request('category')
+//                ]);
+//            }
+//        }
+//        return new PostResource($post);
     }
 
     /**
