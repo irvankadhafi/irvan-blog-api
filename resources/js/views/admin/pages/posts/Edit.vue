@@ -136,8 +136,8 @@ export default {
         },
         async update() {
             // console.log("updated")
-            // this.form['categoryId'] = this.selectedCategory || this.form.categoryId
-            // this.form['image'] = this.selectedImage || this.form.image
+            this.form['categoryId'] = this.selectedCategory || this.form.categoryId
+            this.form['image'] = this.selectedImage || this.form.image
             // console.log(this.form)
 
             // let response = await axios.patch("/update-post/"+this.form.post_id, this.form)

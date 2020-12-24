@@ -137,6 +137,7 @@ class PostController extends Controller
     {
 //        return $post;
         request()->validate([
+                'categoryId' => 'required|numeric',
                 'title' => 'required|min:3|max:255',
                 'body' => 'required',
 //                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -146,6 +147,7 @@ class PostController extends Controller
 
         $post->update([
             'category_id' => $category->id,
+//            'categoryId' => request('categoryId'),
             'title' => request('title'),
             'body' => request('body'),
 //            'image' => request('image'),
